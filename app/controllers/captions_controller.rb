@@ -1,7 +1,6 @@
 class CaptionsController < ApplicationController
   before_action :authenticate_user!
 
-
 #   board_pin_captions GET    /boards/:board_id/pins/:pin_id/captions(.:format)          captions#index
 #                    POST   /boards/:board_id/pins/:pin_id/captions(.:format)          captions#create
 # new_board_pin_caption GET    /boards/:board_id/pins/:pin_id/captions/new(.:format)      captions#new
@@ -12,8 +11,9 @@ class CaptionsController < ApplicationController
 #                    DELETE /boards/:board_id/pins/:pin_id/captions/:id(.:format)      captions#destroy
 
   def index
-    @board = Board.find(params[:board_id])
-    redirect_to board_path(@board)
+    # @board = Board.find(params[:board_id])
+    # redirect_to board_path(@board)
+    @captions = Caption.all
   end
 
   def create
@@ -33,6 +33,12 @@ class CaptionsController < ApplicationController
     @pin = @board.pins.find(params[:pin_id])
     @board = Board.find(params[:board_id])
     @caption = Caption.new
+  end
+
+  def show
+    @caption = Caption.find(params[:id])
+    @tags = Tag.where(caption: @caption)
+    @pins = @tags.map(&:pin)
   end
 
   private

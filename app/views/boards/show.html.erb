@@ -13,7 +13,9 @@
     <% if pin.tags %>
     <p>
       <% pin.tags.each do |tag| %>
-        <a href="#"><%= tag.caption.body %></a>
+
+        <%= link_to tag.caption.body, caption_path(tag.caption) %>
+
       <% end %>
     </p>
     <% end %>

@@ -1,0 +1,15 @@
+<h3>Tag: <%= @caption.body %></h3>
+<%= link_to "back",captions_path %>
+<% if @pins %>
+<ul>
+  <% @pins.each do |pin|  %>
+    <% if pin %>
+    <li>
+      <%= pin.title %>
+      <%= pin.user.email %>
+      <%= image_tag(pin.image_url) %>
+    </li>
+    <% end %>
+  <% end %>
+</ul>
+<% end %>

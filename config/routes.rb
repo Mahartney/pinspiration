@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   resources :boards do
     resources :pins do
       resources :captions, only: [:new, :create]
-      # resources :tags, only: [:new, :create]
     end
   end
 
-  resources :tags
+  resources :captions, only: [:index, :show]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

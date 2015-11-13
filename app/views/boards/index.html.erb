@@ -1,17 +1,19 @@
 <h1> Welcome <%= current_user.email %> </h1>
 
+<%= link_to "View by Tags",captions_path %>
+
 <nav>
   <%= render 'form'%>
 </nav>
 
 <% @boards.each do |board| %>
   <div class= "board_index" >
-    <div class= "test" "board_index_preview">
+    <div class= "board_index_preview">
       <% if board.pins.last %>
         <%= image_tag(board.pins.last.image_url) %>
       <% end %>
     </div>
-    <div class= "test" >
+    <div class= "title" >
       <%= link_to board.title, board_path(board) %>
       <%= board.pins.length %>
     </div>

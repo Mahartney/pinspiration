@@ -1,5 +1,5 @@
 class PinsController < ApplicationController
-
+  before_action :authenticate_user!
 #   board_pins GET    /boards/:board_id/pins(.:format)          pins#index
 #            POST   /boards/:board_id/pins(.:format)          pins#create
 # new_board_pin GET    /boards/:board_id/pins/new(.:format)      pins#new
@@ -15,7 +15,7 @@ class PinsController < ApplicationController
   end
 
   def create
-    @board = current_user.boards.find(params[:board_id])
+    @board = Board.find(params[:board_id])
     pin = pin_params
     pin[:user] = current_user
     @pin = @board.pins.create(pin)
