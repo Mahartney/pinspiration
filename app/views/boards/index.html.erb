@@ -1,1 +1,10 @@
-hello world
+
+<h1>Welcome to Pintobeans</h1>
+
+<ul>
+  <% @boards.each do |board| %>
+  <li>
+    <%= board.title %>
+  </li>
+  <% end %>
+</ul>
