@@ -15,8 +15,7 @@ class BoardsController < ApplicationController
 
   def create
     @user = current_user
-    @board = Board.create!(board_params)
-    #@board.save
+    @board = @user.boards.create(board_params)
     redirect_to boards_path
   end
 

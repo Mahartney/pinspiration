@@ -15,7 +15,7 @@
   <tr>
     <td>Created On </td>
     <td> <%= link_to board.title, board_path(board) %> </td>
-    <td> <%# <board.pins.length %> </td>
+    <td> <%= board.pins.length %> </td>
   </tr>
   <% end %>
 </table>
