@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-
+  before_action :authenticate_user!
   #    boards GET    /boards(.:format)                         boards#index
   #              POST   /boards(.:format)                         boards#create
   #    new_board GET    /boards/new(.:format)                     boards#new
@@ -14,28 +14,39 @@ class BoardsController < ApplicationController
   end
 
   def create
-
+    @user = current_user
+    @board = Board.create!(board_params)
+    #@board.save
+    redirect to boards_path
   end
 
   def new
-
+    @board = Board.new
   end
 
   def edit
-
+    @board = Board.find(params[:id])
   end
 
   def update
-
+    @board = Board.update
+    redirect to boards_path
   end
 
   def show
-
+    @boards = Board.find(params[:id])
   end
 
   def destroy
 
   end
+
+  private
+
+  def board_params
+    params.require.(:board).permit(:title)
+  end
+
 
 
 

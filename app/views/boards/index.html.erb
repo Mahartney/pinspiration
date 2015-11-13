@@ -1,1 +1,21 @@
-hello world
+<h1> Welcome <%= current_user.email %> </h1>
+
+<nav>
+  <%= link_to "Add Board", new_board_path %>
+
+</nav>
+
+<table>
+  <tr>
+    <td>Created On </td>
+    <td>Board Title </td>
+    <td>Posts</td>
+  </tr>
+  <% @boards.each do |board| %>
+  <tr>
+    <td>Created On </td>
+    <td> <% board.title %> </td>
+    <td> <%# <board.pins.length %> </td>
+  </tr>
+  <% end %>
+</table>
