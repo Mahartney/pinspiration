@@ -1,10 +1,21 @@
+<h1> Welcome <%= current_user.email %> </h1>
 
-<h1>Welcome to Pintobeans</h1>
+<nav>
+  <%= link_to "Add Board", new_board_path %>
 
-<ul>
+</nav>
+
+<table>
+  <tr>
+    <td>Created On </td>
+    <td>Board Title </td>
+    <td>Posts</td>
+  </tr>
   <% @boards.each do |board| %>
-  <li>
-    <%= board.title %>
-  </li>
+  <tr>
+    <td>Created On </td>
+    <td> <% board.title %> </td>
+    <td> <%# <board.pins.length %> </td>
+  </tr>
   <% end %>
-</ul>
+</table>
