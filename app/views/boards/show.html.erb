@@ -1,0 +1,16 @@
+<h3><%= @board.title %></h3>
+
+<% if @board.pins %>
+<ul>
+  <% @board.pins.each do |pin| %>
+  <li>
+    <%= pin.title %>
+    <%= pin.user.email %>
+    <%= link_to "delete pin", board_pin_path(@board,pin), method: 'delete' %>
+  </li>
+  <% end %>
+</ul>
+<% end %>
+<!-- <#%= render new_board_pin_path(@board) %> -->
+<%= link_to "Add a Pin", new_board_pin_path(@board) %>
+<%= link_to "delete board", board_path(@board), method: 'delete' %>

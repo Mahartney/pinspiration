@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :pins
-  has_many :boards
+  has_many :boards, dependent: :destroy
   has_many :tags
 
   # Include default devise modules. Others available are:

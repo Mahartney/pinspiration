@@ -14,7 +14,7 @@
   <% @boards.each do |board| %>
   <tr>
     <td>Created On </td>
-    <td> <% board.title %> </td>
+    <td> <%= link_to board.title, board_path(board) %> </td>
     <td> <%# <board.pins.length %> </td>
   </tr>
   <% end %>
