@@ -3,7 +3,6 @@ class CreateBoards < ActiveRecord::Migration
     create_table :boards do |t|
       t.string :title
       t.belongs_to :user
-      t.belongs_to :pin
 
       t.timestamps null: false
     end
