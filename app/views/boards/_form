@@ -1,5 +1,0 @@
-<%= form_for [@user, @board] do |f| %>
-  <%= f.label :title %>
-  <%= f.text_area :title %>
-  <%= f.submit %>
-<% end %>

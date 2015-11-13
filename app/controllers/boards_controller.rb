@@ -17,7 +17,7 @@ class BoardsController < ApplicationController
     @user = current_user
     @board = Board.create!(board_params)
     #@board.save
-    redirect to boards_path
+    redirect_to boards_path
   end
 
   def new
@@ -34,7 +34,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @boards = Board.find(params[:id])
+    @board = Board.find(params[:id])
   end
 
   def destroy
@@ -47,7 +47,7 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require.(:board).permit(:title)
+    params.require(:board).permit(:title)
   end
 
 

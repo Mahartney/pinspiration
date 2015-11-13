@@ -16,7 +16,9 @@ class PinsController < ApplicationController
 
   def create
     @board = Board.find(params[:board_id])
-    @pin = @board.pins.create(pin_params)
+    pin = pin_params
+    pin[:user] = current_user
+    @pin = @board.pins.create(pin)
     redirect_to board_path(@board)
   end
 
@@ -35,8 +37,10 @@ class PinsController < ApplicationController
   end
 
   def destroy
+    @board = Board.find(params[:board_id])
     @pin = Pin.find(params[:id])
     @pin.destroy
+    redirect_to board_path(@board)
   end
 
 
