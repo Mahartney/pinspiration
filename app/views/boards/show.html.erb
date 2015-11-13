@@ -1,19 +1,27 @@
-<h3><%= @board.title %></h3>
+<h3><%= @board.title %> <%= link_to "delete board", board_path(@board), method: 'delete' %></h3>
+<%= link_to "Back", boards_path %>
 <nav>
   <span>Add Pin: <%= render partial: 'pins/form' %> </span>
 </nav>
 <% if @board.pins %>
-<ul>
+
   <% @board.pins.each do |pin| %>
-  <li>
-    <%= pin.title %>
-    <%= pin.user.email %>
-    <%= link_to "delete pin", board_pin_path(@board,pin), method: 'delete' %>
-  </li>
+  <div>
+    <h4><%= pin.title %> <%= link_to "delete pin", board_pin_path(@board,pin), method: 'delete' %></h4>
+    <%= image_tag(pin.image_url) %>
+    <%= link_to "add tag", new_board_pin_caption_path(@board,pin) %>
+    <% if pin.tags %>
+    <p>
+      <% pin.tags.each do |tag| %>
+        <a href="#"><%= tag.caption.body %></a>
+      <% end %>
+    </p>
+    <% end %>
+  </div>
+
   <% end %>
-</ul>
+
 <% end %>
 <%# render new_board_pin_path(@board, @pin) %>
 
 <%# link_to "Add a Pin", new_board_pin_path(@board) %>
-<%= link_to "delete board", board_path(@board), method: 'delete' %>

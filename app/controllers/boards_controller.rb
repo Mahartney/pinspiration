@@ -11,6 +11,7 @@ class BoardsController < ApplicationController
 
   def index
     @boards = Board.all
+    @board = Board.new
   end
 
   def create
@@ -34,6 +35,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+    @pin = Pin.new
   end
 
   def destroy

@@ -1,21 +1,19 @@
 <h1> Welcome <%= current_user.email %> </h1>
 
 <nav>
-  <%= link_to "Add Board", new_board_path %>
-
+  <%= render 'form'%>
 </nav>
 
-<table>
-  <tr>
-    <td>Created On </td>
-    <td>Board Title </td>
-    <td>Posts</td>
-  </tr>
-  <% @boards.each do |board| %>
-  <tr>
-    <td>Created On </td>
-    <td> <%= link_to board.title, board_path(board) %> </td>
-    <td> <%= board.pins.length %> </td>
-  </tr>
-  <% end %>
-</table>
+<% @boards.each do |board| %>
+  <div class= "board_index" >
+    <div class= "test" "board_index_preview">
+      <% if board.pins.last %>
+        <%= image_tag(board.pins.last.image_url) %>
+      <% end %>
+    </div>
+    <div class= "test" >
+      <%= link_to board.title, board_path(board) %>
+      <%= board.pins.length %>
+    </div>
+  </div>
+<% end %>
