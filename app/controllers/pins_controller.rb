@@ -15,7 +15,7 @@ class PinsController < ApplicationController
   end
 
   def create
-    @board = Board.find(params[:board_id])
+    @board = current_user.boards.find(params[:board_id])
     pin = pin_params
     pin[:user] = current_user
     @pin = @board.pins.create(pin)

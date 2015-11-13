@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root to: "boards#index"
 
   resources :boards do
-    resources :pins
+    resources :pins do
+      resources :captions
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

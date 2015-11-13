@@ -1,5 +1,7 @@
 <h3><%= @board.title %></h3>
-
+<nav>
+  <span>Add Pin: <%= render partial: 'pins/form' %> </span>
+</nav>
 <% if @board.pins %>
 <ul>
   <% @board.pins.each do |pin| %>
@@ -11,6 +13,7 @@
   <% end %>
 </ul>
 <% end %>
-<!-- <#%= render new_board_pin_path(@board) %> -->
-<%= link_to "Add a Pin", new_board_pin_path(@board) %>
+<%# render new_board_pin_path(@board, @pin) %>
+
+<%# link_to "Add a Pin", new_board_pin_path(@board) %>
 <%= link_to "delete board", board_path(@board), method: 'delete' %>
