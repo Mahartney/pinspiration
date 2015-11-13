@@ -19,28 +19,14 @@ class CaptionsController < ApplicationController
   def create
     @board = Board.find(params[:board_id])
     @pin = @board.pins.find(params[:pin_id])
-    @caption = Caption.find_or_create_by(body: params[:body])
+    @caption = Caption.find_or_create_by(caption_params)
 
-    existing_tag = Tag.find_by(pin: @pin, user:current_user.id)
+    existing_tag = Tag.find_by(pin: @pin, user:current_user.id, caption:@caption)
     unless existing_tag
       Tag.create(pin:@pin,user:current_user,caption:@caption)
     end
-    # caption = caption_params
-    # caption[:user] = current_user
-    # @caption = @pin.tags.create(caption)
     redirect_to board_path(@board)
   end
-
-#   def create
-#   @post = Post.find(params[:post_id])
-#   @category = Category.find_or_create_by(name: params[:category_name])
-#
-#   existing_tag = Tag.find_by(post: @post, category: @category)
-#   unless existing_tag
-#     @post.tags.create(category: @category)
-#   end
-#   redirect_to post_path(@post)
-# end
 
   def new
     @board = Board.find(params[:board_id])

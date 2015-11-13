@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151113150950) do
+ActiveRecord::Schema.define(version: 20151113194210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,13 +19,13 @@ ActiveRecord::Schema.define(version: 20151113150950) do
   create_table "boards", force: :cascade do |t|
     t.string   "title"
     t.integer  "user_id"
-    t.integer  "pin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "captions", force: :cascade do |t|
     t.string   "body"
+    t.integer  "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -40,11 +40,14 @@ ActiveRecord::Schema.define(version: 20151113150950) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.integer  "pins_id"
-    t.integer  "users_id"
+    t.integer  "pin_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "caption_id"
   end
+
+  add_index "tags", ["caption_id"], name: "index_tags_on_caption_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
