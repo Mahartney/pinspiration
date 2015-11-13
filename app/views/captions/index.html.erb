@@ -1,3 +1,5 @@
+<%= link_to "View Boards",boards_path %>
+
 <% @captions.each do |caption| %>
   <%= link_to caption.body, caption_path(caption) %>
 <% end %>

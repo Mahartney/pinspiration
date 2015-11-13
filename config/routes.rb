@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :boards do
     resources :pins do
       resources :captions, only: [:new, :create]
-      # resources :tags, only: [:new, :create]
     end
   end
 
