@@ -1,0 +1,13 @@
+<h3>Tag: <%= @caption.body %></h3>
+<% if @pins %>
+<ul>
+  <% @pins.each do |pin|  %>
+    <% if pin %>
+    <li>
+      <%= pin.title %>
+      <%= pin.user.email %>
+    </li>
+    <% end %>
+  <% end %>
+</ul>
+<% end %>
